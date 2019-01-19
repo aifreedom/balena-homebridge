@@ -1,0 +1,51 @@
+# Base-image for nodejs on any machine using a template variable
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:latest
+
+# Set the maintainer
+LABEL maintainer="Randall Wood <rhwood@mac.com>"
+
+# Enable systemd init system
+ENV INITSYSTEM on
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Split the resin-wifi-connect and Homebridge configuration to make clear
+# the different parts needed. Ideally we should combine these steps to reduce
+# the number of layers.
+
+# -- Start of resin-wifi-connect section -- #
+
+# Set the device type environment variable using Dockerfile templates
+ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
+
+# Use apt-get to install dependencies
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    dnsmasq && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install resin-wifi-connect
+RUN curl https://api.github.com/repos/resin-io/resin-wifi-connect/releases/latest -s \
+    | grep -hoP 'browser_download_url": "\K.*%%BALENA_ARCH%%\.tar\.gz' \
+    | xargs -n1 curl -Ls \
+    | tar -xvz -C /usr/src/app/
+
+# -- End of resin-wifi-connect section -- #
+
+# -- Start of Homebridge section -- #
+
+# Use apt-get to install dependencies
+#RUN apt-get update && apt-get install -yq --no-install-recommends \
+#    python-dev \
+#    python-smbus \
+#    python-psutil \
+#    wireless-tools && \
+#    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# -- End of Homebridge section -- #
+
+# Copy everything into the container
+COPY . ./
+
+# Start application
+CMD ["bash", "start.sh"]

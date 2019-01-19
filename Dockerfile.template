@@ -50,7 +50,7 @@ COPY package.json package.json
 
 # Install dependencies and clean up to minimize size
 RUN JOBS=MAX npm install --production --unsafe-perm  \
-  && npm cache clean && rm -rf /tmp/*
+  && npm cache clean --force && rm -rf /tmp/*
 
 # Copy everything into the container
 COPY . ./

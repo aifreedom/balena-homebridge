@@ -49,12 +49,11 @@ RUN npm install --global --production homebridge --unsafe-perm
 COPY package.json package.json
 
 # Install dependencies and clean up to minimize size
-RUN JOBS=MAX npm install --production --unsafe-perm  \
-  && npm cache clean --force && rm -rf /tmp/*
+RUN JOBS=MAX npm install --production --unsafe-perm \
+  && rm -rf /tmp/*
 
 # Copy everything into the container
 COPY . ./
-RUN chmod +x setup.sh
 
 # Enable systemd init system in container
 ENV INITSYSTEM on

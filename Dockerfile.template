@@ -10,11 +10,11 @@ ENV INITSYSTEM on
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Split the resin-wifi-connect and Homebridge configuration to make clear
+# Split the balena-wifi-connect and Homebridge configuration to make clear
 # the different parts needed. Ideally we should combine these steps to reduce
 # the number of layers.
 
-# -- Start of resin-wifi-connect section -- #
+# -- Start of balena-wifi-connect section -- #
 
 # Set the device type environment variable using Dockerfile templates
 ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
@@ -24,13 +24,13 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     dnsmasq && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install resin-wifi-connect
-RUN curl https://api.github.com/repos/resin-io/resin-wifi-connect/releases/latest -s \
+# Install balena-wifi-connect
+RUN curl https://api.github.com/repos/balena-io/wifi-connect/releases/latest -s \
     | grep -hoP 'browser_download_url": "\K.*%%BALENA_ARCH%%\.tar\.gz' \
     | xargs -n1 curl -Ls \
     | tar -xvz -C /usr/src/app/
 
-# -- End of resin-wifi-connect section -- #
+# -- End of balena-wifi-connect section -- #
 
 # -- Start of Homebridge section -- #
 

@@ -10,43 +10,54 @@ ENV INITSYSTEM on
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Split the balena-wifi-connect and Homebridge configuration to make clear
-# the different parts needed. Ideally we should combine these steps to reduce
-# the number of layers.
-
-# -- Start of balena-wifi-connect section -- #
-
 # Set the device type environment variable using Dockerfile templates
 ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
 
 # Use apt-get to install dependencies
+# dnsmasq is needed by wifi-connect
+# curl is needed by Homebridge and wifi-connect
+# all others are needed by Homebridge
 RUN apt-get update && apt-get install -yq --no-install-recommends \
-    curl \
-    dnsmasq && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+  curl \
+  dnsmasq \
+  wget \
+  git \
+  python \
+  build-essential \
+  make \
+  g++ \
+  libavahi-compat-libdnssd-dev \
+  libkrb5-dev \
+  net-tools \
+  libnss-mdns \
+  avahi-daemon \
+  avahi-discover \
+  avahi-utils && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install balena-wifi-connect
 RUN curl https://api.github.com/repos/balena-io/wifi-connect/releases/latest -s \
-    | grep -hoP 'browser_download_url": "\K.*%%BALENA_ARCH%%\.tar\.gz' \
-    | xargs -n1 curl -Ls \
-    | tar -xvz -C /usr/src/app/
+  | grep -hoP 'browser_download_url": "\K.*%%BALENA_ARCH%%\.tar\.gz' \
+  | xargs -n1 curl -Ls \
+  | tar -xvz -C /usr/src/app/
 
-# -- End of balena-wifi-connect section -- #
+# Install Homebridge
 
-# -- Start of Homebridge section -- #
+RUN npm install --global --production homebridge --unsafe-perm
 
-# Use apt-get to install dependencies
-#RUN apt-get update && apt-get install -yq --no-install-recommends \
-#    python-dev \
-#    python-smbus \
-#    python-psutil \
-#    wireless-tools && \
-#    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Copy the package.json first for better cache on later pushes
+COPY package.json package.json
 
-# -- End of Homebridge section -- #
+# Install dependencies and clean up to minimize size
+RUN JOBS=MAX npm install --production --unsafe-perm  \
+  && npm cache clean && rm -rf /tmp/*
 
 # Copy everything into the container
 COPY . ./
+RUN chmod +x setup.sh
+
+# Enable systemd init system in container
+ENV INITSYSTEM on
 
 # Start application
-CMD ["bash", "start.sh"]
+CMD ["npm", "start"]

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "start": "npm run start:setup && npm run start:homebridge",
-    "start:setup": "bash ./setup.sh",
+    "start:setup": "bash /usr/src/app/setup.sh",
     "start:homebridge": "DEBUG=* homebridge --debug --user-storage-path /data/.homebridge --plugin-path /usr/src/app/node_modules/",
     "debug": "DEBUG=* homebridge --debug --plugin-path ./node_modules/"
   },

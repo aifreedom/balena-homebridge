@@ -24,7 +24,7 @@ if [ -d "${HOMEBRIDGE_DIR}" ]; then
     echo "KEEP_CONFIG=yes, Run \"Purge Data\" and then \"Reboot\" action to reset to default configuration."
   else
     echo "KEEP_CONFIG=no, Replacing ${HOMEBRIDGE_DIR}/config.json with .homebridge/config.json"
-    sed -e "s/333-33-333/${HOMEKIT_PIN}" .homebridge/config.json > "${HOMEBRIDGE_DIR}/config.json"
+    sed -e "s/333-33-333/${HOMEKIT_PIN}/g" .homebridge/config.json > "${HOMEBRIDGE_DIR}/config.json"
   fi
 else
   # Does not exist
@@ -33,5 +33,5 @@ else
   mkdir -p "$HOMEBRIDGE_DIR"
   echo "Copying Homebridge configuration"
   cp .homebridge/* "$HOMEBRIDGE_DIR"
-  sed -e "s/333-33-333/${HOMEKIT_PIN}" .homebridge/config.json > "${HOMEBRIDGE_DIR}/config.json"
+  sed -e "s/333-33-333/${HOMEKIT_PIN}/g" .homebridge/config.json > "${HOMEBRIDGE_DIR}/config.json"
 fi

@@ -1,0 +1,11 @@
+{
+  "bridge": {
+    "name": "Homebridge",
+    "username": "AA:BB:CC:DD:EE:FF",
+    "port": 51826,
+    "pin": "333-33-333"
+  },
+  "description": "balenaCloud app for Homebridge",
+  "accessories": [],
+  "platforms": []
+}

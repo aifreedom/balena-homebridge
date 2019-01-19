@@ -1,0 +1,33 @@
+{
+  "name": "balena-homebridge",
+  "version": "0.1.0",
+  "description": "balenaCloud app for HomeBridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "npm run start:setup && npm run start:homebridge",
+    "start:setup": "./setup.sh",
+    "start:homebridge": "DEBUG=* homebridge --debug --user-storage-path /data/.homebridge --plugin-path /usr/src/app/node_modules/",
+    "debug": "DEBUG=* homebridge --debug --plugin-path ./node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhwood/balena-homebridge.git"
+  },
+  "keywords": [
+    "balena",
+    "homebridge",
+    "resin",
+    "resin-io",
+    "balenaCloud"
+  ],
+  "author": "Randall Wood",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rhwood/balena-homebridge/issues"
+  },
+  "homepage": "https://github.com/rhwood/balena-homebridge#readme",
+  "dependencies": {
+    "homebridge-server": "^1.0.25"
+  }
+}

@@ -8,3 +8,5 @@ export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # internet - unless the configured WiFi connection is no longer available.
 
 # Start the main application
+
+# nothing at this point

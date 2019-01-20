@@ -33,5 +33,6 @@ fi
 
 # Always update PIN and USERNAME to match balenaCloud
 cp ${CONFIG_JSON} /tmp/config.json
-cat /tmp/config.json | jq ".bridge.pin = \"${HOMEKIT_PIN}\" | .bridge.username = \"${HOMEKIT_USER}\"" > ${CONFIG_JSON}
+cat /tmp/config.json \
+  | jq ".bridge.pin = \"${HOMEKIT_PIN}\" | .bridge.username = \"${HOMEKIT_USER}\"" > ${CONFIG_JSON}
 rm /tmp/config.json

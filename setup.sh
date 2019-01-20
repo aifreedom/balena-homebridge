@@ -5,6 +5,7 @@ WORKING_DIR="/usr/src/app"
 HOMEBRIDGE_DIR="/data/.homebridge/"
 # Use Homekit PIN from balenaCloud
 HOMEKIT_PIN=${HOMEKIT_PIN:-"000-00-000"}
+HOMEKIT_USER=${HOMEKIT_USER:-"00:11:22:33:44:55"}
 
 cd "$WORKING_DIR"
 
@@ -21,5 +22,6 @@ else
   echo "Copying Homebridge configuration"
   cp .homebridge/* "$HOMEBRIDGE_DIR"
   # 333-33-333 is default pin, assume it has been changed to anything else
-  sed -e "s/333-33-333/${HOMEKIT_PIN}/g" .homebridge/config.json > "${HOMEBRIDGE_DIR}/config.json"
+  sed -i -e "s/333-33-333/${HOMEKIT_PIN}/g" ${HOMEBRIDGE_DIR}/config.json
+  sed -i -e "s/AA:BB:CC:DD:EE:FF/${HOMEKIT_USER}/g" ${HOMEBRIDGE_DIR}/config.json
 fi

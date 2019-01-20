@@ -17,23 +17,26 @@ ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
 # dnsmasq is needed by wifi-connect
 # curl is needed by Homebridge and wifi-connect
 # all others are needed by Homebridge
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-  curl \
-  dnsmasq \
-  wget \
-  git \
-  python \
-  build-essential \
-  make \
-  g++ \
-  libavahi-compat-libdnssd-dev \
-  libkrb5-dev \
-  net-tools \
-  libnss-mdns \
-  avahi-daemon \
-  avahi-discover \
-  avahi-utils && \
-  apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+  apt-get install -yq --no-install-recommends \
+    curl \
+    dnsmasq \
+    jq \
+    wget \
+    git \
+    python \
+    build-essential \
+    make \
+    g++ \
+    libavahi-compat-libdnssd-dev \
+    libkrb5-dev \
+    net-tools \
+    libnss-mdns \
+    avahi-daemon \
+    avahi-discover \
+    avahi-utils && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
 # Install balena-wifi-connect
 RUN curl https://api.github.com/repos/balena-io/wifi-connect/releases/latest -s \

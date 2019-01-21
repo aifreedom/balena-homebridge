@@ -9,10 +9,9 @@
   "accessories": [],
   "platforms": [
     {
-      "platform": "Server",
+      "platform": "config",
       "port": 80,
-      "name": "Homebridge Server",
-      "log": "/data/server.log",
+      "name": "Homebridge Config UI",
       "restart": "bash ./balena-restart.sh"
     }
   ]

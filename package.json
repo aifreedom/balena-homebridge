@@ -4,7 +4,6 @@
   "description": "balenaCloud app for HomeBridge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "start": "npm run start:setup && npm run start:homebridge",
     "start:setup": "./setup.sh",
     "start:homebridge": "DEBUG=* homebridge --debug --user-storage-path /data/.homebridge --plugin-path /usr/src/app/node_modules/",
@@ -31,7 +30,7 @@
     "ajv": "^5.5.2",
     "homebridge": "^0.4.46",
     "homebridge-config-ui-x": "^3.9.6",
-    "homebridge-lutron-caseta-smockle": "^2.0.7",
+    "homebridge-lutron-caseta-smockle": "^2.0.8",
     "homebridge-nest": "^2.1.4"
   }
 }

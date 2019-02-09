@@ -2,6 +2,8 @@
 
 balenaCloud application for HomeBridge
 
+[![Build Status](https://travis-ci.com/rhwood/balena-homebridge.svg?branch=master)](https://travis-ci.com/rhwood/balena-homebridge)
+
 ## Setup
 
 You can setup a balena-homebridge computer either remotely or locally. We recommend the remote method since it provides an ability to manage multiple IoT devices from a single dashboard.

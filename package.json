@@ -29,7 +29,7 @@
   "dependencies": {
     "ajv": "^5.5.2",
     "homebridge": "^0.4.46",
-    "homebridge-config-ui-x": "^3.10.0",
+    "homebridge-config-ui-x": "^4.0.0",
     "homebridge-lutron-caseta-smockle": "^2.0.16",
     "homebridge-nest": "^2.1.4"
   },

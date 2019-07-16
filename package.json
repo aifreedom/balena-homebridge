@@ -27,10 +27,9 @@
   },
   "homepage": "https://github.com/rhwood/balena-homebridge#readme",
   "dependencies": {
-    "ajv": "^5.5.2",
     "homebridge": "^0.4.50",
     "homebridge-config-ui-x": "^4.5.1",
-    "homebridge-lutron-caseta-smockle": "^2.0.21"
+    "homebridge-lutron-caseta-smockle": "^2.0.24"
   },
   "greenkeeper": {
     "ignore": [

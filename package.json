@@ -30,8 +30,7 @@
     "ajv": "^5.5.2",
     "homebridge": "^0.4.50",
     "homebridge-config-ui-x": "^4.5.1",
-    "homebridge-lutron-caseta-smockle": "^2.0.21",
-    "homebridge-nest": "^2.1.4"
+    "homebridge-lutron-caseta-smockle": "^2.0.21"
   },
   "greenkeeper": {
     "ignore": [

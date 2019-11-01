@@ -3,7 +3,6 @@
 balenaCloud application for HomeBridge
 
 [![Build Status](https://travis-ci.com/rhwood/balena-homebridge.svg?branch=master)](https://travis-ci.com/rhwood/balena-homebridge)
-[![Greenkeeper badge](https://badges.greenkeeper.io/rhwood/balena-homebridge.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/rhwood/balena-homebridge/badge.svg)](https://snyk.io/test/github/rhwood/balena-homebridge)
 
 ## Setup

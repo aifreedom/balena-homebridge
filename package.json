@@ -29,6 +29,6 @@
   "dependencies": {
     "homebridge": "0.4.50",
     "homebridge-config-ui-x": "4.6.4",
-    "homebridge-lutron-caseta-smockle": "2.0.30"
+    "homebridge-lutron-caseta-smockle": "2.0.32"
   }
 }

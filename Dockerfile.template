@@ -4,9 +4,6 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-node:latest
 # Set the maintainer
 LABEL maintainer="Randall Wood <rhwood@mac.com>"
 
-# Enable systemd init system
-ENV INITSYSTEM on
-
 # Set the working directory
 WORKDIR /usr/src/app
 
@@ -20,9 +17,6 @@ COPY . ./
 RUN JOBS=MAX npm ci --production --unsafe-perm \
   && npm cache clean --force \
   && rm -rf /tmp/*
-
-# Enable systemd init system in container
-ENV INITSYSTEM on
 
 # Start application
 CMD ["npm", "start"]

@@ -10,9 +10,6 @@ ENV INITSYSTEM on
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Set the device type environment variable using Dockerfile templates
-ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
-
 # Install dependencies
 RUN install_packages jq
 

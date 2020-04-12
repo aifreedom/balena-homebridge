@@ -15,8 +15,7 @@ COPY . ./
 
 # Install dependencies and clean up to minimize size
 RUN JOBS=MAX npm ci --production --unsafe-perm \
-  && npm cache clean --force \
-  && rm -rf /tmp/*
+  && npm cache clean --force
 
 # Start application
 CMD ["npm", "start"]

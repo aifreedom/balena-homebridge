@@ -28,7 +28,7 @@
   "homepage": "https://github.com/rhwood/balena-homebridge#readme",
   "dependencies": {
     "homebridge": "0.4.53",
-    "homebridge-config-ui-x": "4.14.0",
+    "homebridge-config-ui-x": "4.15.1",
     "homebridge-lutron-caseta-smockle": "2.0.33"
   }
 }

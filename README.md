@@ -1,5 +1,7 @@
 # balena-homebridge
 
+ **⚠️ I have switched to using the [Official Homebridge Raspberry Pi Image](https://github.com/homebridge/homebridge-raspbian-image) ⚠️** As of 2020-07-03, I likely will not be updating this project any more. Please submit an issue if you want to take over maintaining this project.
+
 balenaCloud application for HomeBridge
 
 [![Build Status](https://travis-ci.com/rhwood/balena-homebridge.svg?branch=master)](https://travis-ci.com/rhwood/balena-homebridge)

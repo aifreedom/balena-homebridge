@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Constants
-WORKING_DIR="/usr/src/app"
-HOMEBRIDGE_DIR="/data/.homebridge/"
 CONFIG_JSON="${HOMEBRIDGE_DIR}/config.json"
 # Use Homekit identity from balenaCloud
 HOMEKIT_PIN=${HOMEKIT_PIN:-"000-00-000"}

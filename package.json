@@ -6,8 +6,10 @@
   "scripts": {
     "start": "npm run start:setup && npm run start:homebridge",
     "start:setup": "./setup.sh",
-    "start:homebridge": "DEBUG=* homebridge --debug --user-storage-path /data/.homebridge --plugin-path /usr/src/app/node_modules/",
-    "debug": "DEBUG=* homebridge --debug --plugin-path ./node_modules/"
+    "start:homebridge": "homebridge --user-storage-path /data/.homebridge --plugin-path /data/.homebridge/node_modules",
+    "debug": "DEBUG=* homebridge --debug --plugin-path ./node_modules/",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
   "dependencies": {
     "homebridge": "1.1.2",
     "homebridge-config-ui-x": "4.26.0",
-    "homebridge-lutron-caseta-smockle": "3.0.45"
-  }
+    "snyk": "^1.381.2"
+  },
+  "snyk": true
 }

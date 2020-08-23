@@ -4,64 +4,23 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-node:latest
 # Set the maintainer
 LABEL maintainer="Randall Wood <rhwood@mac.com>"
 
-# Enable systemd init system
-ENV INITSYSTEM on
+ARG WORKING_DIR=/usr/src/app
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR ${WORKING_DIR}
 
-# Set the device type environment variable using Dockerfile templates
-ENV DEVICE_TYPE=%%BALENA_MACHINE_NAME%%
-
-# Use apt-get to install dependencies
-# dnsmasq is needed by wifi-connect
-# curl is needed by Homebridge and wifi-connect
-# all others are needed by Homebridge
-RUN apt-get update \
-  && apt-get install -yq --no-install-recommends \
-    curl \
-    dnsmasq \
-    jq \
-    wget \
-    git \
-    python \
-    build-essential \
-    make \
-    g++ \
-    libavahi-compat-libdnssd-dev \
-    libkrb5-dev \
-    net-tools \
-    libnss-mdns \
-    avahi-daemon \
-    avahi-discover \
-    avahi-utils \
-    vim \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-
-# Install balena-wifi-connect
-RUN curl https://api.github.com/repos/balena-io/wifi-connect/releases/latest -s \
-  | grep -hoP 'browser_download_url": "\K.*%%BALENA_ARCH%%\.tar\.gz' \
-  | xargs -n1 curl -Ls \
-  | tar -xvz -C /usr/src/app/
-
-# Install Homebridge
-
-RUN npm install --global --production homebridge --unsafe-perm
-
-# Copy the package.json first for better cache on later pushes
-COPY package.json package.json
-
-# Install dependencies and clean up to minimize size
-RUN JOBS=MAX npm install --production --unsafe-perm \
-  && npm cache clean --force \
-  && rm -rf /tmp/*
+# Install dependencies
+RUN install_packages jq
 
 # Copy everything into the container
 COPY . ./
 
-# Enable systemd init system in container
-ENV INITSYSTEM on
+# Install dependencies and clean up to minimize size
+RUN JOBS=MAX npm ci --production --unsafe-perm \
+  && npm cache clean --force
+
+ENV WORKING_DIR ${WORKING_DIR}
+ENV HOMEBRIDGE_DIR /data/.homebridge/
 
 # Start application
 CMD ["npm", "start"]

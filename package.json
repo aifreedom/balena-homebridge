@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/rhwood/balena-homebridge#readme",
   "dependencies": {
-    "homebridge": "1.1.0",
-    "homebridge-config-ui-x": "4.20.0"
+    "homebridge": "1.1.2",
+    "homebridge-config-ui-x": "4.26.0"
   }
 }

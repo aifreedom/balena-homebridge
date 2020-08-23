@@ -4,8 +4,8 @@
 
 balenaCloud application for HomeBridge
 
-[![Build Status](https://travis-ci.com/rhwood/balena-homebridge.svg?branch=master)](https://travis-ci.com/rhwood/balena-homebridge)
-[![Known Vulnerabilities](https://snyk.io/test/github/rhwood/balena-homebridge/badge.svg)](https://snyk.io/test/github/rhwood/balena-homebridge)
+[![Build Status](https://travis-ci.com/aifreedom/balena-homebridge.svg?branch=master)](https://travis-ci.com/aifreedom/balena-homebridge)
+[![Known Vulnerabilities](https://snyk.io/test/github/aifreedom/balena-homebridge/badge.svg)](https://snyk.io/test/github/aifreedom/balena-homebridge)
 
 ## Setup
 

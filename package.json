@@ -30,7 +30,7 @@
   "homepage": "https://github.com/rhwood/balena-homebridge#readme",
   "dependencies": {
     "homebridge": "1.1.3",
-    "homebridge-config-ui-x": "4.26.0",
+    "homebridge-config-ui-x": "4.28.0",
     "snyk": "^1.381.2"
   },
   "snyk": true

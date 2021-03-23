@@ -31,7 +31,7 @@
   "dependencies": {
     "homebridge": "1.1.3",
     "homebridge-config-ui-x": "4.28.0",
-    "snyk": "^1.382.0"
+    "snyk": "^1.465.0"
   },
   "snyk": true
 }
